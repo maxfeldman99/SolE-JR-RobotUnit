@@ -1,5 +1,6 @@
 package com.max.controller;
 
+import lejos.hardware.Sound;
 import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
@@ -22,15 +23,17 @@ public class MotorExecutor implements Runnable {
 	}
 	
 	private void executeMotor(RegulatedMotor motor,int speed, int angle,int delayAmount) {
+		
 		motor.setSpeed(speed);
-		motor.rotate(angle);
+		motor.backward();
 		Delay.msDelay(delayAmount);
 		motor.stop();
 		motor.close();
 	}
 
 	@Override
-	public void run() {
+	public void run() 
+	{
 		executeMotor(motor, speed, angle, delayAmount);
 	}
 

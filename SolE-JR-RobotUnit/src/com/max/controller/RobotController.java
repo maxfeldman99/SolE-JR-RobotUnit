@@ -9,11 +9,11 @@ public class RobotController
 {
 	private static RobotController instance = null;
 	private MotorController motorController;
-	
+
 	
 	private RobotController()
 	{
-		motorController = MotorController.getInstance();
+		
 	}
 	
 	public static RobotController getInstance() 
@@ -36,7 +36,8 @@ public class RobotController
 				int speed = Integer.parseInt(tempMotor.getSpeed());
 				int angle = Integer.parseInt(tempMotor.getAngle());
 				int delayAmount  = Integer.parseInt(tempMotor.getDelayAmount());
-
+				
+				motorController = MotorController.getInstance();
 				
 				motorController.moveMotor(tempMotor.getPort(), speed, angle,delayAmount);
 				

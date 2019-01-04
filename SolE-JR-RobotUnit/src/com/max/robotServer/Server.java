@@ -24,7 +24,7 @@ public class Server implements Runnable {
 	
 	private Gson gson;
 	private RobotController controller;
-	// test
+
 	
 	public Server() 
 	{
@@ -36,6 +36,7 @@ public class Server implements Runnable {
 		public void run() {
 			while(SERVER_IS_RUNNING) {
 			try {
+				Sound.beep();
 				serverSocket= new ServerSocket(PORT);
 				socket  = serverSocket.accept();
 				inputStream = new ObjectInputStream(socket.getInputStream());
@@ -49,6 +50,8 @@ public class Server implements Runnable {
 					//Request request = gson.fromJson(str, Request.class);
 					
 					controller.executeSequence(request.getSequence());
+					
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
