@@ -36,9 +36,11 @@ public class MotorController {
 		motor.setSpeed(speed);
 		
 		
-		motor.rotate(angle);
+		motor.rotate(angle,false);
 		
 		Delay.msDelay(delayAmount);
+		
+		motor.resetTachoCount();
 		
 		motor.stop();
 		
